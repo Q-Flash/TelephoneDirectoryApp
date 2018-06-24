@@ -1,0 +1,10 @@
+page-welcome {
+	#welcome{
+		background: color($colors, l_green);
+
+		h1{
+			color: color($colors, light);
+			text-align: center;
+		}
+	}
+}
