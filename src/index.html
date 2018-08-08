@@ -17,7 +17,19 @@
 
   <!-- cordova.js required for cordova apps (remove if not needed) -->
   <script src="cordova.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBqJmXTwDh7P2gwLSat0CSM3XlYYchltc8",
+      authDomain: "telephonedirectory-d6a19.firebaseapp.com",
+      databaseURL: "https://telephonedirectory-d6a19.firebaseio.com",
+      projectId: "telephonedirectory-d6a19",
+      storageBucket: "",
+      messagingSenderId: "913000341362"
+    };
+    firebase.initializeApp(config);
+  </script>
   <!-- un-comment this code to enable service worker
   <script>
     if ('serviceWorker' in navigator) {
@@ -45,5 +57,6 @@
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
 
+  
 </body>
 </html>
