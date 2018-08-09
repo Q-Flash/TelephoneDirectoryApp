@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 /**
  * Generated class for the IndexPage page.
@@ -15,11 +16,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class IndexPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(	public navCtrl: NavController, 
+  			  	public navParams: NavParams,
+  			  	private sqlite: SQLite){
+  		//Set items variable to data from local json file
+
+ 	}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad IndexPage');
   }
+
 
 }
