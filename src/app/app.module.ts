@@ -1,8 +1,11 @@
 import { NgModule, ErrorHandler } from '@angular/core';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { SQLite, SQLiteDatabaseConfig, SQLiteObject } from '@ionic-native/sqlite';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { DirectoryObject } from '../app/directory_class';
+
+
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -26,6 +29,8 @@ export const config = {
       storageBucket: "gs://telephonedirectory-d6a19.appspot.com",
       messagingSenderId: "913000341362"
 };
+
+
 
 @NgModule({
   declarations: [
@@ -56,8 +61,24 @@ export const config = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SQLite
+    DirectoryObject,
+    {provide: SQLite},
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
+/*
+declare var SQL;
+
+class SQLiteMock {
+public create(config: SQLiteDatabaseConfig): Promise<SQLiteObject> {
+
+    var db = new SQL.Database();
+
+    return new Promise((resolve,reject)=>{
+    resolve(new SQLiteObject(new Object()));
+    });
+}
+} 
+*/
+
 export class AppModule {}

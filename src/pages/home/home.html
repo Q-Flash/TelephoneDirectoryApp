@@ -8,7 +8,10 @@
 <button ion-button (click)="index()">Index</button>
 <button ion-button (click)="sync_data()">Sync Data</button>
 
-<ion-item *ngFor="let item of items">
-    {{item}}
+  
+  <ion-item *ngFor="let item of items">
+      <p>Name: {{item.Name}}</p>
+      <p>Address: {{item.Address}}</p>
+      <p>Phone: {{item.Number}}</p>
   </ion-item>
 </ion-content>
