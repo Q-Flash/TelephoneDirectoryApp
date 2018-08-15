@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { IndexPage } from '../index/index';
 import * as firebase from 'firebase';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireDatabase} from 'angularfire2/database';
-import { DirectoryObject } from '../../app/directory_class';
+import { DirectoryProvider } from '../../providers/directory/directory';
 
 @Component({
   selector: 'page-home',
@@ -16,19 +16,27 @@ import { DirectoryObject } from '../../app/directory_class';
 
 
 export class HomePage {
-	items: [];
-	constructor(
-		public navCtrl: NavController,
-		private fbd: AngularFireDatabase, 
-		private sqlite: SQLite){
-
-		this.items = new Array();		
+	items: any[];
+	public records : any[] = [];
+	constructor(public navCtrl: NavController, public directoryProvider : DirectoryProvider){
+		this.items = new Array();
+		this.directoryProvider = new DirectoryProvider();	
 	}
 
 
 
 	ionViewDidEnter(){
-    	console.log('view did enter');
+		console.log('Ion view did enter');
+
+		this.directoryProvider.createPouchDB();
+
+		
+		this.directoryProvider.read()
+		.then(records => {
+			this.records = records;
+		})
+		.catch((err)=>{});
+		
 	}
 
 
@@ -53,8 +61,11 @@ export class HomePage {
 		    });
 		});
 		this.items = newArray;
+
 	}
-
-
 }
+
+
+
+
 
